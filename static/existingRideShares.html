@@ -12,12 +12,7 @@
         <title>Existing Ride Shares | UCLA Rideshare</title>
     </head>
     <body class="container">
-        <h1 class="text-center">Existing Rideshare Offers</h1>
-        <h3>FAQ:</h3>
-        <ul>
-        <li><h5><b>I found a match, how do I contact the driver of an existing rideshare?</b><br>Select the "Contact" button and enter your .edu-email (and, optionally, your phone number) when prompted. UCLA Rideshare will send the driver's contact information to your email, and the driver will be emailed your contact information as well.</h5></li>
-        <li><h5><b>Can I edit my rideshare offer?</b><br>No, instead please cancel your original offer and re-submit it.</h5></li>
-        </ul><br>
+        <h1 class="text-center">Existing Rideshare Offers</h1><br>
         <table class="table table-responsive" border="1">
             <thead>
             <tr>
@@ -27,8 +22,7 @@
                 <td><h3>Time</h3></td>
                 <td><h3>Compensation Desired</h3></td>
                 <td><h3>Available Number of Seats</h3></td>
-                <td><h3>Contact</h3></td>
-                <td><h3>Cancel</h3></td>
+                <td><h3>Contact Info</h3></td>
             </tr>
             </thead>
             <tbody>
@@ -53,8 +47,7 @@
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].time + "</td>"))
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].compensation + "</td>"))
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].seats + "</td>"))
-                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CONTACT
-                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CANCEL
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].email + "</td>"))
                     $("tbody").append(tableRow)
                 }
             })

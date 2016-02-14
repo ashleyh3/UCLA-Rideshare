@@ -13,10 +13,8 @@
     <body class="container">
         <h1 class="text-center">Share a Ride</h1>
         <div class="form-group">
-        <label for="email"><h2>Email:</h2>
+        <label for="email"><h2>Contact Info:</h2>
             <input id="email" class="form-control" type="text"></label><br>
-        <label for="phone"><h2>Phone: (Optional)</h2> 
-            <input id="phone" class="form-control" type="text"></label><br>
         <label for="date"><h2>Date: (MM/DD/YYYY Format)</h2>
             <input id="date" class="form-control" type="date"></label><br>        
         <label for="time"><h2>Time:</h2>
@@ -31,7 +29,6 @@
             <input id="compensation" class="form-control" type="text"></label><br>
         </div>
         <br><button class="btn btn-default" type="submit" onclick="createRide()"><h4>Submit</h4></button>
-        <h4 class="text-center">If you make an error in your request, ignore the email verification link, re-submit, and only verify for the second email.</h4>        
         <footer class="container">
             <div class="text-center">
                 <a href="myProfile.html"><h5>Want to go back to the home page?</h5></a>
@@ -42,7 +39,6 @@
                 var myDataRef = new Firebase('https://burning-torch-2153.firebaseio.com/rides/');
                 var ride = {
                     "email" : document.getElementById("email").value,
-                    "phone" : document.getElementById("phone").value,
                     "date" : document.getElementById("date").value,
                     "time" : document.getElementById("time").value,
                     "departure" : document.getElementById("departure").value,

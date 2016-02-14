@@ -11,12 +11,7 @@
         <title>Existing Ride Requests | UCLA Rideshare</title>        
     </head>
     <body class="container">
-        <h1 class="text-center">Existing Rideshare Requests</h1>
-        <h3>FAQ:</h3>
-        <ul>
-        <li><h5><b>I found a match, how do I contact the owner of an existing request?</b><br>Select the "Contact" button and enter your .edu-email (and, optionally, your phone number) when prompted. UCLA Rideshare will send the requester's contact information to your email, and the requester will be emailed your contact information as well.</h5></li>
-        <li><h5><b>Can I edit my rideshare request?</b><br>No, instead please cancel your original request and re-submit it.</h5></li>
-        </ul><br>
+        <h1 class="text-center">Existing Rideshare Requests</h1><br>
         <table class="table table-responsive" border="1">
             <thead>
             <tr>
@@ -26,8 +21,7 @@
                 <td><h3>Time</h3></td>
                 <td><h3>Compensation Offered</h3></td>
                 <td><h3>Requested Number of Seats</h3></td>
-                <td><h3>Contact</h3></td>
-                <td><h3>Cancel</h3></td>                
+                <td><h3>Contact Info</h3></td>
             </tr>    
             </thead>
             <tbody>
@@ -43,14 +37,13 @@
             myDataRef.on('value',function(dataSnapshot){
                 console.log(dataSnapshot.val())
                 $("tbody").empty()
-                console.log(moment.format())
-                var now = new Date();
+//                var now = new Date();
                     for(var i in dataSnapshot.val()) {
                     console.log(dataSnapshot.val()[i].date)
-                    console.log(Date.now())
-                    console.log(now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate())
-                    console.log(now)
-                    if (dataSnapshot.val()[i].date > now) {
+//                    console.log(Date.now())
+//                    console.log(now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate())
+//                    console.log(now)
+//                    if (dataSnapshot.val()[i].date > now) {
                     var tableRow = $("<tr>" + "</tr>");
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].departure + "</td>"))
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].arrival + "</td>"))
@@ -58,11 +51,9 @@
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].time + "</td>"))
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].compensation + "</td>"))
                     tableRow.append( $("<td>" + dataSnapshot.val()[i].seats + "</td>"))
-                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CONTACT
-                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CANCEL
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].email + "</td>"))
                     $("tbody").append(tableRow)
-                }}
-                    })
+                }})
         </script>
 </body>
 </html>
