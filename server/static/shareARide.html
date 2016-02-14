@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Share a Ride | UCLA Rideshare</title>
+    </head>
+    <body class="container">
+        <h1 class="text-center">Share a Ride</h1>
+        <div class="form-group">
+        <label for="email"><h2>Contact Info:</h2>
+            <input id="email" class="form-control" type="text"></label><br>
+        <label for="date"><h2>Date: (MM/DD/YYYY Format)</h2>
+            <input id="date" class="form-control" type="date"></label><br>        
+        <label for="time"><h2>Time:</h2>
+            <input id="time" class="form-control" type="text"></label><br>
+        <label for="departure"><h2>Starting Location:</h2>
+            <input id="departure" class="form-control" type="text"></label><br>
+        <label for="arrival"><h2>Destination:</h2>
+            <input id="arrival" class="form-control" type="text"></label><br>
+        <label for="seats"><h2>Available Number of Seats:</h2>
+            <input id="seats" class="form-control" type="text"></label><br>
+        <label for="compensation"><h2>Compensation Desired (Optional):</h2>
+            <input id="compensation" class="form-control" type="text"></label><br>
+        </div>
+        <br><button class="btn btn-default" type="submit" onclick="createRide()"><h4>Submit</h4></button>
+        <footer class="container">
+            <div class="text-center">
+                <a href="myProfile.html"><h5>Want to go back to the home page?</h5></a>
+            </div>
+        </footer>
+        <script>
+            function createRide() {
+                var myDataRef = new Firebase('https://burning-torch-2153.firebaseio.com/rides/');
+                var ride = {
+                    "email" : document.getElementById("email").value,
+                    "date" : document.getElementById("date").value,
+                    "time" : document.getElementById("time").value,
+                    "departure" : document.getElementById("departure").value,
+                    "arrival" : document.getElementById("arrival").value,
+                    "seats" : document.getElementById("seats").value,
+                    "compensation" : document.getElementById("compensation").value
+                }
+                myDataRef.push(ride, function(){
+                window.location.href = "redirect.html"  
+                })
+            }
+        </script>   
+    </body>
+</html>
