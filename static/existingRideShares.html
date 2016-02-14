@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script> src="server/linq.min.js" </script>    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Existing Ride Shares | UCLA Rideshare</title>
+    </head>
+    <body class="container">
+        <h1 class="text-center">Existing Rideshare Offers</h1>
+        <h3>FAQ:</h3>
+        <ul>
+        <li><h5><b>I found a match, how do I contact the driver of an existing rideshare?</b><br>Select the "Contact" button and enter your .edu-email (and, optionally, your phone number) when prompted. UCLA Rideshare will send the driver's contact information to your email, and the driver will be emailed your contact information as well.</h5></li>
+        <li><h5><b>Can I edit my rideshare offer?</b><br>No, instead please cancel your original offer and re-submit it.</h5></li>
+        </ul><br>
+        <table class="table table-responsive" border="1">
+            <thead>
+            <tr>
+                <td><h3>Starting Location</h3></td>
+                <td><h3>Destination</h3></td>
+                <td><h3>Date</h3></td>
+                <td><h3>Time</h3></td>
+                <td><h3>Compensation Desired</h3></td>
+                <td><h3>Available Number of Seats</h3></td>
+                <td><h3>Contact</h3></td>
+                <td><h3>Cancel</h3></td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <footer class="container">
+            <div class="text-center">
+                <a href="myProfile.html"><h5>Want to go back to the home page?</h5></a>
+            </div>
+        </footer>
+        <script>
+            var myDataRef = new Firebase('https://burning-torch-2153.firebaseio.com/rides/');
+            myDataRef.on('value',function(dataSnapshot){
+                console.log(dataSnapshot.val())
+                $("tbody").empty()
+                for(var i in dataSnapshot.val()) {
+                    console.log(dataSnapshot.val()[i].arrival)
+                var tableRow = $("<tr>" + "</tr>");
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].departure + "</td>"))
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].arrival + "</td>"))
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].date + "</td>"))
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].time + "</td>"))
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].compensation + "</td>"))
+                    tableRow.append( $("<td>" + dataSnapshot.val()[i].seats + "</td>"))
+                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CONTACT
+                    tableRow.append( $("<td>" + "</td>")) //  FILL IN LATER FOR CANCEL
+                    $("tbody").append(tableRow)
+                }
+            })
+        </script>
+</body>
+</html>
